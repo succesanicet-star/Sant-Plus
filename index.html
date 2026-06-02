@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santé Plus Niger-Gaya | Clinique Médicale & Soins</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts (Typographie ultra-lisible) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --medical-blue: #0f4c81; /* Bleu confiance profond */
+            --health-green: #2ec4b6; /* Vert soin moderne */
+            --light-bg: #f8f9fa;
+            --text-dark: #2b2d42;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+        }
+
+        /* Palette de couleurs & Boutons */
+        .bg-medical-blue { background-color: var(--medical-blue); }
+        .text-medical-blue { color: var(--medical-blue); }
+        .text-health-green { color: var(--health-green); }
+        
+        .btn-health {
+            background-color: var(--health-green);
+            color: white;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-health:hover {
+            background-color: #24a195;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.95), rgba(46, 196, 182, 0.85)), url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1920') no-repeat center center/cover;
+            color: white;
+            padding: 120px 0;
+        }
+
+        /* Cartes de Services */
+        .service-card {
+            border: none;
+            border-top: 4px solid var(--medical-blue);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--health-green);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(46, 196, 182, 0.1);
+            color: var(--health-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-medical-blue" href="#">
+                <i class="fa-solid fa-heart-pulse text-health-green me-2"></i>Santé Plus <span class="text-health-green">Niger-Gaya</span>
+            </a>
+            <button class="navbar-collapse-toggle d-lg-none border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars fs-3 text-medical-blue"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#services">Nos Services</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#propos">À Propos</a></li>
+                    <li class="nav-item ms-2">
+                        <!-- Bouton WhatsApp Direct sécurisé (Anti-popup block) -->
+                        <a href="https://wa.me/2290169134408?text=Bonjour%20Sant%C3%A9%20Plus%20Niger-Gaya,%20je%20souhaite%20prendre%20rendez-vous." 
+                           target="_blank" 
+                           class="btn btn-health px-4 py-2 rounded-pill">
+                            <i class="fa-brands fa-whatsapp me-2"></i>Urgence / RDV
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Accueil / Hero -->
+    <section id="accueil" class="hero-section text-center text-lg-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <span class="badge bg-light text-medical-blue fw-bold px-3 py-2 rounded-pill mb-3 text-uppercase">Votre santé, notre priorité absolue</span>
+                    <h1 class="display-4 fw-bold mb-4">Des soins médicaux d'excellence à Gaya</h1>
+                    <p class="lead mb-5 opacity-90">La clinique Santé Plus Niger-Gaya met à votre disposition une équipe médicale dévouée et des technologies modernes pour assurer un suivi clinique rigoureux et humain.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <a href="https://wa.me/2290169134408?text=Bonjour,%20je%20souhaite%20contacter%20la%20clinique." target="_blank" class="btn btn-light text-medical-blue fw-bold btn-lg px-4 rounded-pill shadow">
+                            <i class="fa-solid fa-calendar-check me-2 text-health-green"></i>Prendre RDV
+                        </a>
+                        <a href="#services" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                            Découvrir nos services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-medical-blue">Nos Domaines d'Expertise</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">Une prise en charge médicale complète, assurée par des professionnels de santé qualifiés à Gaya.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h4 class="fw-bold text-medical-blue mb-3">Consultations Générales</h4>
+                        <p class="text-muted mb-0">Diagnostics précis, examens cliniques approfondis et suivi personnalisé pour toute la famille.</p>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-stethoscope"></i>
+                        </div>
+                        <h4 class="fw-bold text-medical-blue mb-3">Soins Infirmiers</h4>
+                        <p class="text-muted mb-0">Administration des traitements, pansements complexes et surveillance constante des constantes vitales.</p>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-kit-medical"></i>
+                        </div>
+                        <h4 class="fw-bold text-medical-blue mb-3">Urgences & Suivi</h4>
+                        <p class="text-muted mb-0">Une réactivité maximale pour la gestion des soins urgents et une coordination médicale fluide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section id="propos" class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800" alt="Équipe médicale" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold text-medical-blue mb-4">Pourquoi choisir Santé Plus Niger-Gaya ?</h2>
+                    <p class="text-muted mb-4">Située au cœur de Gaya, notre structure médicale allie dévouement humain et rigueur scientifique. Nous croyons en une médecine de proximité où chaque patient bénéficie d'une écoute attentive et de protocoles de soins validés.</p>
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fa-solid fa-circle-check text-health-green fs-4 me-3 mt-1"></i>
+                        <div>
+                            <h5 class="fw-bold text-medical-blue mb-1">Disponibilité immédiate</h5>
+                            <p class="text-muted">Un canal de communication direct pour vos besoins de santé urgents.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <i class="fa-solid fa-circle-check text-health-green fs-4 me-3 mt-1"></i>
+                        <div>
+                            <h5 class="fw-bold text-medical-blue mb-1">Rigueur clinique</h5>
+                            <p class="text-muted">Des pratiques de soins infirmiers et médicaux conformes aux standards de santé publique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page / Footer -->
+    <footer class="bg-medical-blue text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4 border-bottom border-secondary pb-4 mb-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <h4 class="fw-bold mb-3">Santé Plus Niger-Gaya</h4>
+                    <p class="opacity-75 mb-0">Votre partenaire de confiance pour un accès aux soins facilité et sécurisé au Niger.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <h5 class="fw-bold mb-3">Contact Direct</h5>
+                    <a href="https://wa.me/2290169134408" target="_blank" class="text-white text-decoration-none fs-5 fw-semibold">
+                        <i class="fa-brands fa-whatsapp text-health-green me-2 animate-bounce"></i>+229 01 69 13 44 08
+                    </a>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small opacity-75 text-center">
+                <p class="mb-2 mb-md-0">&copy; 2026 Santé Plus Niger-Gaya. Tous droits réservés.</p>
+                <!-- Crédit Auteur Portfolio -->
+                <p class="mb-0">Développé avec rigueur par <span class="fw-bold text-health-green">Anicet Kponadou</span> | Medical Web Developer</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
