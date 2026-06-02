@@ -74,6 +74,30 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
+
+        /* --- Zone Corrigée : Style du Pied de Page Ultra-Lisible --- */
+        .custom-footer {
+            background-color: #eef8f7; /* Fond clair médical (comme sur l'image corrigée) */
+            color: #333333; /* Texte sombre pour un contraste maximal */
+            border-top: 3px solid var(--health-green);
+        }
+        .custom-footer .footer-title {
+            color: var(--medical-blue);
+            font-weight: 700;
+        }
+        .custom-footer a.footer-link {
+            color: var(--medical-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .custom-footer a.footer-link:hover {
+            color: var(--health-green);
+        }
+        .custom-footer .footer-credits {
+            font-size: 0.9rem;
+            color: #555555;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +108,7 @@
             <a class="navbar-brand fw-bold text-medical-blue" href="#">
                 <i class="fa-solid fa-heart-pulse text-health-green me-2"></i>Santé Plus <span class="text-health-green">Niger-Gaya</span>
             </a>
-            <button class="navbar-collapse-toggle d-lg-none border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars fs-3 text-medical-blue"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -93,7 +117,6 @@
                     <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#services">Nos Services</a></li>
                     <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#propos">À Propos</a></li>
                     <li class="nav-item ms-2">
-                        <!-- Bouton WhatsApp Direct sécurisé (Anti-popup block) -->
                         <a href="https://wa.me/2290169134408?text=Bonjour%20Sant%C3%A9%20Plus%20Niger-Gaya,%20je%20souhaite%20prendre%20rendez-vous." 
                            target="_blank" 
                            class="btn btn-health px-4 py-2 rounded-pill">
@@ -135,7 +158,6 @@
             </div>
             
             <div class="row g-4">
-                <!-- Service 1 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 service-card">
                         <div class="icon-box">
@@ -145,7 +167,6 @@
                         <p class="text-muted mb-0">Diagnostics précis, examens cliniques approfondis et suivi personnalisé pour toute la famille.</p>
                     </div>
                 </div>
-                <!-- Service 2 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 service-card">
                         <div class="icon-box">
@@ -155,7 +176,6 @@
                         <p class="text-muted mb-0">Administration des traitements, pansements complexes et surveillance constante des constantes vitales.</p>
                     </div>
                 </div>
-                <!-- Service 3 -->
                 <div class="col-md-4">
                     <div class="card h-100 p-4 service-card">
                         <div class="icon-box">
@@ -198,25 +218,24 @@
         </div>
     </section>
 
-    <!-- Pied de page / Footer -->
-    <footer class="bg-medical-blue text-white pt-5 pb-3">
+    <!-- Pied de page / Footer (CORRIGÉ & ULTRA LISIBLE) -->
+    <footer class="custom-footer pt-5 pb-3">
         <div class="container">
-            <div class="row g-4 border-bottom border-secondary pb-4 mb-3">
+            <div class="row g-4 border-bottom border-light-subtle pb-4 mb-3">
                 <div class="col-md-6 text-center text-md-start">
-                    <h4 class="fw-bold mb-3">Santé Plus Niger-Gaya</h4>
-                    <p class="opacity-75 mb-0">Votre partenaire de confiance pour un accès aux soins facilité et sécurisé au Niger.</p>
+                    <h4 class="footer-title mb-3">Santé Plus Niger-Gaya</h4>
+                    <p class="mb-0 text-secondary">Votre partenaire de confiance pour un accès aux soins facilité et sécurisé au Niger.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <h5 class="fw-bold mb-3">Contact Direct</h5>
-                    <a href="https://wa.me/2290169134408" target="_blank" class="text-white text-decoration-none fs-5 fw-semibold">
-                        <i class="fa-brands fa-whatsapp text-health-green me-2 animate-bounce"></i>+229 01 69 13 44 08
+                    <h5 class="footer-title mb-3">Contact Direct</h5>
+                    <a href="https://wa.me/2290169134408" target="_blank" class="footer-link fs-5">
+                        <i class="fa-brands fa-whatsapp text-health-green me-2"></i>+229 01 69 13 44 08
                     </a>
                 </div>
             </div>
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small opacity-75 text-center">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center footer-credits text-center">
                 <p class="mb-2 mb-md-0">&copy; 2026 Santé Plus Niger-Gaya. Tous droits réservés.</p>
-                <!-- Crédit Auteur Portfolio -->
-                <p class="mb-0">Développé avec rigueur par <span class="fw-bold text-health-green">Anicet Kponadou</span> | Medical Web Developer</p>
+                <p class="mb-0">Développé avec rigueur par <span class="fw-bold text-medical-blue">Anicet Kponadou</span> | Medical Web Developer</p>
             </div>
         </div>
     </footer>
