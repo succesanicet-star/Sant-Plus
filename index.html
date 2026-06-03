@@ -1,243 +1,1242 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santé Plus Niger-Gaya | Clinique Médicale & Soins</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <style>
-        :root {
-            --medical-blue: #0f4c81; 
-            --health-green: #2ec4b6; 
-            --light-bg: #f8f9fa;
-            --text-dark: #2b2d42;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Santé Plus – Gaya, Niger</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: #ffffff;
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
-        /* Boutons et éléments du haut */
-        .bg-medical-blue { background-color: var(--medical-blue); }
-        .text-medical-blue { color: var(--medical-blue); }
-        .text-health-green { color: var(--health-green); }
-        
-        .btn-health {
-            background-color: var(--health-green);
-            color: white;
-            font-weight: 600;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        .btn-health:hover {
-            background-color: #24a195;
-            color: white;
-            transform: translateY(-2px);
-        }
+  <style>
+    /* ===========================
+       CSS VARIABLES & BASE
+    =========================== */
+    :root {
+      --primary:    #0A5F8A;   /* Bleu santé professionnel */
+      --primary-lt: #0E7EB8;
+      --accent:     #17A5C8;
+      --sky:        #E6F4FA;
+      --white:      #FFFFFF;
+      --dark:       #0D1F1A;
+      --muted:      #6B8F82;
+      --border:     #C8E8F4;
+      --gold:       #C99B3A;
+      --section-bg: #F0F8FC;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
 
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(15, 76, 129, 0.95), rgba(46, 196, 182, 0.85)), url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1920') no-repeat center center/cover;
-            color: white;
-            padding: 120px 0;
-        }
+    /* ===========================
+       NAVBAR
+    =========================== */
+    .navbar {
+      background: var(--white) !important;
+      border-bottom: 2px solid var(--border);
+      padding: 0.9rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+      box-shadow: 0 2px 20px rgba(11,110,79,.08);
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary) !important;
+      letter-spacing: -0.5px;
+    }
+    .navbar-brand span { color: var(--gold); }
+    .nav-link {
+      color: var(--dark) !important;
+      font-weight: 500;
+      font-size: .93rem;
+      padding: .5rem 1rem !important;
+      border-radius: 6px;
+      transition: all .2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--sky);
+      color: var(--primary) !important;
+    }
+    .btn-nav-cta {
+      background: var(--primary);
+      color: var(--white) !important;
+      border-radius: 8px;
+      padding: .5rem 1.3rem !important;
+      font-weight: 600;
+    }
+    .btn-nav-cta:hover { background: var(--primary-lt); }
 
-        /* Cartes de Services */
-        .service-card {
-            border: none;
-            border-top: 4px solid var(--medical-blue);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-top-color: var(--health-green);
-        }
+    /* ===========================
+       HERO
+    =========================== */
+    #accueil {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lt) 55%, var(--accent) 100%);
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #accueil::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1600&q=80') center/cover no-repeat;
+      opacity: .13;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      border-radius: 30px;
+      padding: .35rem 1rem;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,.85);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .btn-hero-primary {
+      background: #fff;
+      color: var(--primary);
+      font-weight: 700;
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      transition: all .25s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-hero-primary:hover { background: var(--sky); transform: translateY(-2px); color: var(--primary); }
+    .btn-hero-outline {
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,.5);
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .25s;
+    }
+    .btn-hero-outline:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .hero-stat-card {
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-stat-card .num { font-size: 2rem; font-weight: 700; font-family: 'Playfair Display', serif; }
+    .hero-stat-card .lbl { font-size: .78rem; opacity: .8; text-transform: uppercase; letter-spacing: .05em; }
 
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(46, 196, 182, 0.1);
-            color: var(--health-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+    /* ===========================
+       SECTION SHARED
+    =========================== */
+    .section-pad { padding: 5rem 0; }
+    .section-bg { background: var(--section-bg); }
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 640px;
+    }
+    .divider { width: 52px; height: 4px; background: var(--accent); border-radius: 3px; margin: 1rem 0 1.5rem; }
 
-        /* --- CORRECTION STRICTE : Pied de page Noir & Blanc --- */
-        .custom-footer {
-            background-color: #ffffff !important; /* Fond blanc pur */
-            color: #000000 !important; /* Texte noir pur */
-            border-top: 1px solid #e0e0e0; /* Simple ligne grise de séparation */
-        }
-        .custom-footer h4, 
-        .custom-footer h5, 
-        .custom-footer p, 
-        .custom-footer span {
-            color: #000000 !important; /* Force tout le texte en noir */
-        }
-        .custom-footer a.footer-link {
-            color: #000000 !important;
-            text-decoration: none;
-            font-weight: 700;
-        }
-        .custom-footer a.footer-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    /* ===========================
+       SERVICES
+    =========================== */
+    #services { scroll-margin-top: 80px; }
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 1.6rem;
+      transition: all .3s;
+      height: 100%;
+    }
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 45px rgba(11,110,79,.13);
+    }
+    .service-icon {
+      width: 58px; height: 58px;
+      background: var(--sky);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+    }
+    .service-card h5 { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: .6rem; }
+    .service-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin: 0; }
+
+    /* ===========================
+       ÉQUIPE (5 vraies photos)
+    =========================== */
+    #equipe { scroll-margin-top: 80px; }
+    .team-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      transition: all .3s;
+      height: 100%;
+    }
+    .team-card:hover { transform: translateY(-5px); box-shadow: 0 18px 50px rgba(11,110,79,.14); }
+    .team-img-wrap {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+    }
+    .team-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .4s;
+    }
+    .team-card:hover .team-img-wrap img { transform: scale(1.05); }
+    .verified-badge {
+      position: absolute; bottom: 10px; right: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .team-info { padding: 1.2rem 1.4rem 1.5rem; }
+    .team-info h6 { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; color: var(--dark); }
+    .team-info .role { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: .5rem; }
+    .team-info p { font-size: .83rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+    /* ===========================
+       GALERIE PÉDIATRIQUE
+    =========================== */
+    #galerie { scroll-margin-top: 80px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 14px;
+    }
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item.big {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(11,110,79,.65) 0%, transparent 55%);
+      display: flex; align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      color: #fff; font-size: .88rem; font-weight: 600;
+      background: rgba(255,255,255,.15);
+      padding: .3rem .8rem;
+      border-radius: 20px;
+    }
+    /* Vidéo zone */
+    .video-section { margin-top: 3.5rem; }
+    .video-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--dark);
+      position: relative;
+    }
+    .video-wrap iframe {
+      width: 100%; height: 360px;
+      border: none;
+      display: block;
+    }
+    .video-label {
+      background: var(--primary);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .45rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 6px;
+      margin-bottom: .7rem;
+    }
+
+    /* ===========================
+       À PROPOS
+    =========================== */
+    #apropos { scroll-margin-top: 80px; }
+    .apropos-img {
+      border-radius: 22px;
+      overflow: hidden;
+      height: 480px;
+      position: relative;
+    }
+    .apropos-img img { width: 100%; height: 100%; object-fit: cover; }
+    .apropos-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--section-bg) 100%);
+    }
+    .value-item {
+      display: flex; gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .value-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--sky);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .value-item h6 { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; }
+    .value-item p { font-size: .86rem; color: var(--muted); margin: 0; line-height: 1.65; }
+
+    /* ===========================
+       CONTACT DIRECTEUR
+    =========================== */
+    #contact { scroll-margin-top: 80px; }
+    .contact-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(11,110,79,.09);
+    }
+    .contact-left {
+      background: linear-gradient(160deg, var(--primary) 0%, var(--primary-lt) 100%);
+      padding: 3rem 2.5rem;
+      color: #fff;
+    }
+    .contact-left h3 { font-size: 1.9rem; margin-bottom: .8rem; }
+    .contact-left p { opacity: .85; font-size: .95rem; line-height: 1.7; }
+    .contact-info-item {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 1.6rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
+      padding: .9rem 1.2rem;
+    }
+    .contact-info-item i { font-size: 1.25rem; }
+    .contact-info-item .inf-label { font-size: .75rem; opacity: .75; text-transform: uppercase; letter-spacing: .07em; }
+    .contact-info-item .inf-val { font-size: .95rem; font-weight: 600; }
+    .director-card {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 14px;
+      padding: 1rem 1.3rem;
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 2rem;
+    }
+    .director-avatar {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.4);
+      font-family: 'Playfair Display', serif;
+    }
+    .contact-right { padding: 3rem 2.5rem; }
+    .contact-right h4 { font-size: 1.45rem; margin-bottom: 1.6rem; }
+    .form-label { font-size: .83rem; font-weight: 600; color: var(--dark); margin-bottom: .35rem; }
+    .form-control, .form-select {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: .75rem 1rem;
+      font-size: .93rem;
+      transition: border .2s, box-shadow .2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(29,164,123,.15);
+      outline: none;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      padding: .9rem 2rem;
+      border-radius: 12px;
+      border: none;
+      font-size: .98rem;
+      width: 100%;
+      transition: all .25s;
+      letter-spacing: .02em;
+    }
+    .btn-submit:hover { background: var(--primary-lt); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(11,110,79,.25); }
+    .success-msg {
+      display: none;
+      background: var(--sky);
+      border: 1.5px solid var(--accent);
+      border-radius: 12px;
+      padding: 1rem 1.3rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: .92rem;
+      align-items: center;
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.7);
+      padding: 4rem 0 2rem;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .footer-brand span { color: var(--gold); }
+    footer h6 { color: #fff; font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.2rem; }
+    footer a { color: rgba(255,255,255,.65); text-decoration: none; font-size: .9rem; display: block; margin-bottom: .55rem; transition: color .2s; }
+    footer a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-size: .83rem;
+    }
+    .footer-bottom a { color: var(--gold); display: inline; }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,.08);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7) !important;
+      font-size: 1rem;
+      transition: all .2s;
+      margin-bottom: 0 !important;
+    }
+    .social-btn:hover { background: var(--accent); color: #fff !important; }
+
+    /* ===========================
+       RESPONSIVE FIXES
+    =========================== */
+    @media(max-width:768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+      .gallery-item.big { grid-column: 1; grid-row: 1; }
+      .video-wrap iframe { height: 220px; }
+      .contact-left { padding: 2rem 1.5rem; }
+      .contact-right { padding: 2rem 1.5rem; }
+      .apropos-img { height: 260px; }
+    }
+    @media(max-width:576px) {
+      .hero-title { font-size: 1.9rem; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+      .gallery-item.big { grid-row: auto; }
+    }
+
+    /* Pill tag */
+    .tag-pill {
+      background: var(--sky);
+      color: var(--primary);
+      border-radius: 20px;
+      padding: .25rem .8rem;
+      font-size: .77rem;
+      font-weight: 700;
+      display: inline-block;
+      margin: .2rem;
+    }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem;
+      color: #fff;
+      box-shadow: 0 6px 25px rgba(37,211,102,.4);
+      z-index: 9999;
+      text-decoration: none;
+      transition: transform .25s;
+    }
+    .wa-float:hover { transform: scale(1.1); color: #fff; }
+
+    /* Back to top */
+    #backTop {
+      position: fixed;
+      bottom: 92px; right: 28px;
+      width: 42px; height: 42px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(11,110,79,.35);
+      cursor: pointer;
+      z-index: 9998;
+      border: none;
+      transition: all .25s;
+    }
+    #backTop.show { display: flex; }
+    #backTop:hover { background: var(--primary-lt); }
+  </style>
 </head>
 <body>
 
-    <!-- Barre de navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-medical-blue" href="#">
-                <i class="fa-solid fa-heart-pulse text-health-green me-2"></i>Santé Plus <span class="text-health-green">Niger-Gaya</span>
-            </a>
-            <button class="navbar-toggler border-0 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars fs-3 text-medical-blue"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#accueil">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#services">Nos Services</a></li>
-                    <li class="nav-item"><a class="nav-link mx-2 fw-semibold" href="#propos">À Propos</a></li>
-                    <li class="nav-item ms-2">
-                        <a href="https://wa.me/2290169134408?text=Bonjour%20Sant%C3%A9%20Plus%20Niger-Gaya,%20je%20souhaite%20prendre%20rendez-vous." 
-                           target="_blank" 
-                           class="btn btn-health px-4 py-2 rounded-pill">
-                            <i class="fa-brands fa-whatsapp me-2"></i>Urgence / RDV
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#accueil">
+      <i class="bi bi-heart-pulse-fill me-1" style="color:var(--accent)"></i>
+      Santé<span>Plus</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#equipe">Équipe</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
+        <li class="nav-item"><a class="nav-link" href="#apropos">À Propos</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="nav-link btn-nav-cta" href="#contact">
+            <i class="bi bi-telephone-fill me-1"></i>Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <!-- Section Accueil / Hero -->
-    <section id="accueil" class="hero-section text-center text-lg-start">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <span class="badge bg-light text-medical-blue fw-bold px-3 py-2 rounded-pill mb-3 text-uppercase">Votre santé, notre priority absolue</span>
-                    <h1 class="display-4 fw-bold mb-4">Des soins médicaux d'excellence à Gaya</h1>
-                    <p class="lead mb-5 opacity-90">La clinique Santé Plus Niger-Gaya met à votre disposition une équipe médicale dévouée et des technologies modernes pour assurer un suivi clinique rigoureux et humain.</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-                        <a href="https://wa.me/2290169134408?text=Bonjour,%20je%20souhaite%20contacter%20la%20clinique." target="_blank" class="btn btn-light text-medical-blue fw-bold btn-lg px-4 rounded-pill shadow">
-                            <i class="fa-solid fa-calendar-check me-2 text-health-green"></i>Prendre RDV
-                        </a>
-                        <a href="#services" class="btn btn-outline-light btn-lg px-4 rounded-pill">
-                            Découvrir nos services
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section Services -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container py-4">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold text-medical-blue">Nos Domaines d'Expertise</h2>
-                <p class="text-muted mx-auto" style="max-width: 600px;">Une prise en charge médicale complète, assurée par des professionnels de santé qualifiés à Gaya.</p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-user-doctor"></i>
-                        </div>
-                        <h4 class="fw-bold text-medical-blue mb-3">Consultations Générales</h4>
-                        <p class="text-muted mb-0">Diagnostics précis, examens cliniques approfondis et suivi personnalisé pour toute la famille.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-stethoscope"></i>
-                        </div>
-                        <h4 class="fw-bold text-medical-blue mb-3">Soins Infirmiers</h4>
-                        <p class="text-muted mb-0">Administration des traitements, pansements complexes et surveillance constante des constantes vitales.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 service-card">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-kit-medical"></i>
-                        </div>
-                        <h4 class="fw-bold text-medical-blue mb-3">Urgences & Suivi</h4>
-                        <p class="text-muted mb-0">Une réactivité maximale pour la gestion des soins urgents et une coordination médicale fluide.</p>
-                    </div>
-                </div>
-            </div>
+<!-- ===================== PAGE 1 – ACCUEIL / HERO ===================== -->
+<section id="accueil">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-7" data-aos="fade-right">
+        <span class="hero-badge"><i class="bi bi-geo-alt-fill me-1"></i> Gaya, Niger – Quartier Plateaux</span>
+        <h1 class="hero-title">
+          Votre Santé,<br/>Notre Priorité<br/>
+          <span style="color:var(--gold)">Absolue.</span>
+        </h1>
+        <p class="hero-sub">
+          Santé Plus est une clinique moderne dédiée à des soins de qualité supérieure, disponibles pour tous. Une équipe qualifiée, des équipements adaptés, un accueil humain et bienveillant.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact" class="btn-hero-primary">
+            <i class="bi bi-calendar-check me-2"></i>Prendre Rendez-vous
+          </a>
+          <a href="#services" class="btn-hero-outline">
+            Nos Services <i class="bi bi-arrow-right ms-1"></i>
+          </a>
         </div>
-    </section>
-
-    <!-- Section À Propos -->
-    <section id="propos" class="py-5">
-        <div class="container py-4">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800" alt="Équipe médicale" class="img-fluid rounded-4 shadow">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="fw-bold text-medical-blue mb-4">Pourquoi choisir Santé Plus Niger-Gaya ?</h2>
-                    <p class="text-muted mb-4">Située au cœur de Gaya, notre structure médicale allie dévouement humain et rigueur scientifique. Nous croyons en une médecine de proximité où chaque patient bénéficie d'une écoute attentive et de protocoles de soins validés.</p>
-                    <div class="d-flex align-items-start mb-3">
-                        <i class="fa-solid fa-circle-check text-health-green fs-4 me-3 mt-1"></i>
-                        <div>
-                            <h5 class="fw-bold text-medical-blue mb-1">Disponibilité immédiate</h5>
-                            <p class="text-muted">Un canal de communication direct pour vos besoins de santé urgents.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start">
-                        <i class="fa-solid fa-circle-check text-health-green fs-4 me-3 mt-1"></i>
-                        <div>
-                            <h5 class="fw-bold text-medical-blue mb-1">Rigueur clinique</h5>
-                            <p class="text-muted">Des pratiques de soins infirmiers et médicaux conformes aux standards de santé publique.</p>
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="hero-stat-card">
+              <div class="num">5 000+</div>
+              <div class="lbl">Patients Traités</div>
             </div>
+          </div>
+          <div class="col-6">
+            <div class="hero-stat-card">
+              <div class="num">12</div>
+              <div class="lbl">Spécialités Médicales</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="hero-stat-card">
+              <div class="num">24/7</div>
+              <div class="lbl">Urgences Disponibles</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="hero-stat-card">
+              <div class="num">98%</div>
+              <div class="lbl">Satisfaction Patient</div>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Pied de page / Footer (CORRIGÉ : NOIR ET BLANC STRICT, SANS MÉLANGE) -->
-    <footer class="custom-footer pt-5 pb-3">
-        <div class="container">
-            <div class="row g-4 border-bottom border-dark-subtle pb-4 mb-3">
-                <div class="col-md-6 text-center text-md-start">
-                    <h4 class="fw-bold mb-3">Santé Plus Niger-Gaya</h4>
-                    <p class="mb-0">Votre partenaire de confiance pour un accès aux soins facilité et sécurisé au Niger.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <h5 class="fw-bold mb-3">Contact Direct</h5>
-                    <a href="https://wa.me/2290169134408" target="_blank" class="footer-link fs-5">
-                        <i class="fa-brands fa-whatsapp me-2"></i>+229 01 69 13 44 08
-                    </a>
-                </div>
-            </div>
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center small">
-                <p class="mb-2 mb-md-0">&copy; 2026 Santé Plus Niger-Gaya. Tous droits réservés.</p>
-                <p class="mb-0">Développé avec rigueur par <span class="fw-bold">Anicet Kponadou</span> | Medical Web Developer</p>
-            </div>
+        <!-- Horaires rapides -->
+        <div class="hero-stat-card mt-3 text-start" style="padding:1rem 1.4rem;">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <i class="bi bi-clock-fill" style="font-size:1rem"></i>
+            <span style="font-size:.78rem; text-transform:uppercase; letter-spacing:.07em; opacity:.8;">Horaires d'ouverture</span>
+          </div>
+          <div style="font-size:.92rem; font-weight:600;">Lun – Sam : 7h00 – 20h00</div>
+          <div style="font-size:.82rem; opacity:.75;">Dimanche & Urgences : 24h/24</div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===================== PAGE 2 – SERVICES ===================== -->
+<section id="services" class="section-pad section-bg">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Ce que nous offrons</span>
+      <h2 class="section-title">Nos Services Médicaux</h2>
+      <div class="divider mx-auto"></div>
+      <p class="section-sub mx-auto">
+        Santé Plus propose une gamme complète de soins médicaux pour répondre aux besoins de santé de toute la famille, du nourrisson à la personne âgée.
+      </p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-heart-pulse"></i></div>
+          <h5>Consultations Générales</h5>
+          <p>Médecine générale, bilans de santé complets, suivi régulier de vos pathologies chroniques.</p>
+          <span class="tag-pill">Adultes</span><span class="tag-pill">Enfants</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-gender-female"></i></div>
+          <h5>Maternité & Gynécologie</h5>
+          <p>Suivi de grossesse, consultations prénatales, planning familial et soins gynécologiques spécialisés.</p>
+          <span class="tag-pill">Femmes</span><span class="tag-pill">Mères</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-activity"></i></div>
+          <h5>Urgences Médicales</h5>
+          <p>Prise en charge rapide et efficace 24h/24, 7j/7 pour toutes les urgences médicales.</p>
+          <span class="tag-pill">24h/7j</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-emoji-smile"></i></div>
+          <h5>Pédiatrie</h5>
+          <p>Soins dédiés aux enfants de 0 à 15 ans : vaccinations, consultations de croissance, maladies infantiles.</p>
+          <span class="tag-pill">Nourrissons</span><span class="tag-pill">Enfants</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-capsule"></i></div>
+          <h5>Pharmacie Intégrée</h5>
+          <p>Une pharmacie sur place pour délivrer rapidement vos ordonnances et médicaments essentiels.</p>
+          <span class="tag-pill">Sur place</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-eyedropper"></i></div>
+          <h5>Analyses & Laboratoire</h5>
+          <p>Examens biologiques, imagerie médicale, résultats rapides pour orienter vos traitements.</p>
+          <span class="tag-pill">Résultats rapides</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-scissors"></i></div>
+          <h5>Petite Chirurgie</h5>
+          <p>Soins de plaies, sutures, petites interventions chirurgicales réalisées en ambulatoire.</p>
+          <span class="tag-pill">Ambulatoire</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-droplet-half"></i></div>
+          <h5>Soins Infirmiers</h5>
+          <p>Injections, perfusions, pansements, soins post-opératoires et surveillance clinique quotidienne.</p>
+          <span class="tag-pill">Quotidien</span>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h5>Nutrition & Prévention</h5>
+          <p>Conseils nutritionnels, prévention du diabète, de l'hypertension et des maladies non transmissibles.</p>
+          <span class="tag-pill">Bien-être</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PAGE 3 – ÉQUIPE (5 PHOTOS HUMAINES) ===================== -->
+<section id="equipe" class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Notre équipe médicale</span>
+      <h2 class="section-title">Des Professionnels à Votre Service</h2>
+      <div class="divider mx-auto"></div>
+      <p class="section-sub mx-auto">
+        Une équipe pluridisciplinaire de soignants qualifiés, dévoués et passionnés par leur mission de santé publique.
+      </p>
+    </div>
+    <div class="row g-4">
+      <!-- Membre 1 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=85" alt="Médecin Généraliste – Santé Plus"/>
+            <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Vérifié</div>
+          </div>
+          <div class="team-info">
+            <h6>Notre Médecin Généraliste</h6>
+            <div class="role">Médecin Généraliste & Directeur</div>
+            <p>Expérience solide en médecine interne et en gestion d'établissement de santé.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Membre 2 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=85" alt="Pédiatre – Santé Plus"/>
+            <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Vérifié</div>
+          </div>
+          <div class="team-info">
+            <h6>Notre Pédiatre</h6>
+            <div class="role">Pédiatre Spécialisée</div>
+            <p>Spécialiste en santé de l'enfant, vaccinations et suivi de croissance néonatale.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Membre 3 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=600&q=85" alt="Sage-femme – Santé Plus"/>
+            <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Vérifié</div>
+          </div>
+          <div class="team-info">
+            <h6>Notre Sage-femme</h6>
+            <div class="role">Sage-femme Principale</div>
+            <p>Spécialiste en maternité, suivi prénatal et accompagnement des accouchements.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Membre 4 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=85" alt="Infirmier Chef – Santé Plus"/>
+            <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Vérifié</div>
+          </div>
+          <div class="team-info">
+            <h6>Notre Infirmier Chef</h6>
+            <div class="role">Infirmier Chef d'Unité</div>
+            <p>Responsable des soins infirmiers, perfusions, pansements et suivi post-opératoire.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Membre 5 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=600&q=85" alt="Pharmacienne – Santé Plus"/>
+            <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Vérifié</div>
+          </div>
+          <div class="team-info">
+            <h6>Notre Pharmacienne</h6>
+            <div class="role">Pharmacienne & Biologiste</div>
+            <p>Responsable du laboratoire et de la pharmacie intégrée. Analyse et délivrance des ordonnances.</p>
+          </div>
+        </div>
+      </div>
+      <!-- CTA rejoindre -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="team-card d-flex flex-column align-items-center justify-content-center text-center" style="background:var(--sky); border-color:var(--accent); min-height:380px;">
+          <i class="bi bi-person-plus-fill" style="font-size:2.5rem; color:var(--primary); margin-bottom:1rem;"></i>
+          <h6 style="font-size:1.1rem;">Rejoignez Notre Équipe</h6>
+          <p class="mt-2 mb-3" style="font-size:.88rem; color:var(--muted);">Vous êtes soignant motivé et passionné ? Santé Plus recherche des talents.</p>
+          <a href="#contact" class="btn btn-sm" style="background:var(--primary); color:#fff; border-radius:8px; padding:.55rem 1.4rem; font-weight:600;">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PAGE 4 – GALERIE PÉDIATRIQUE + VIDÉOS ===================== -->
+<section id="galerie" class="section-pad section-bg">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Vie à la Clinique</span>
+      <h2 class="section-title">Nos Soins en Images</h2>
+      <div class="divider mx-auto"></div>
+      <p class="section-sub mx-auto">
+        Des moments de soins, d'humanité et de dévouement — nos équipes au quotidien pour le bien-être de chaque patient.
+      </p>
+    </div>
+
+    <!-- Grille galerie photos enfants + personnel -->
+    <div class="gallery-grid">
+      <div class="gallery-item big">
+        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&q=85" alt="Soins pédiatriques – Infirmière et enfant"/>
+        <div class="gallery-overlay"><span><i class="bi bi-camera-fill me-1"></i>Soins pédiatriques</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&q=85" alt="Consultation enfant"/>
+        <div class="gallery-overlay"><span>Consultation médicale</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=85" alt="Équipe soignante"/>
+        <div class="gallery-overlay"><span>Notre équipe</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&q=85" alt="Enfant en soins"/>
+        <div class="gallery-overlay"><span>Soins aux enfants</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&q=85" alt="Médecin et patient"/>
+        <div class="gallery-overlay"><span>Suivi patient</span></div>
+      </div>
+    </div>
+
+    <!-- VIDÉOS DU PERSONNEL -->
+    <div class="video-section">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="video-label"><i class="bi bi-play-circle-fill"></i> Vidéo 1 – Notre Équipe en Action</div>
+          <div class="video-wrap">
+            <!-- Vidéo YouTube embedée — personnel médical au travail -->
+            <iframe
+              src="https://www.youtube.com/embed/NHXDJ7-eNt8?si=jgHGCp9lYrwZPGtY&amp;rel=0&amp;modestbranding=1"
+              title="Personnel médical – soins infirmiers"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="mt-2" style="font-size:.85rem; color:var(--muted);">Notre personnel soignant au quotidien : dévouement, professionnalisme et compassion.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="video-label" style="background:var(--gold);"><i class="bi bi-play-circle-fill"></i> Vidéo 2 – Soins Pédiatriques</div>
+          <div class="video-wrap">
+            <!-- Vidéo YouTube embedée — soins pédiatriques -->
+            <iframe
+              src="https://www.youtube.com/embed/3wPR6cOVL70?si=YiWVJME0jVXJmzPy&rel=0&modestbranding=1"
+              title="Soins pédiatriques – enfants à la clinique"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="mt-2" style="font-size:.85rem; color:var(--muted);">La santé de l'enfant est au cœur de notre mission — soins pédiatriques adaptés et bienveillants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PAGE 5 – À PROPOS ===================== -->
+<section id="apropos" class="section-pad">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <div class="apropos-img">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=85" alt="Santé Plus – Bâtiment et équipe"/>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">Pourquoi Santé Plus ?</h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted); line-height:1.8; margin-bottom:1.5rem;">
+          Fondée à Gaya, au cœur du Quartier Plateaux, Santé Plus est née d'une volonté forte : rendre les soins de santé accessibles, humains et de qualité à toutes les couches de la population de Gaya et de la région de Dosso.
+        </p>
+        <p style="color:var(--muted); line-height:1.8; margin-bottom:2rem;">
+          Avec une équipe de soignants dévoués, des infrastructures modernes et une approche centrée sur le patient, nous croyons que chaque vie mérite les meilleurs soins possibles.
+        </p>
+        <div class="value-item">
+          <div class="value-icon"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <h6>Qualité & Sécurité</h6>
+            <p>Des protocoles stricts, des équipements stérilisés et une prise en charge conforme aux standards internationaux.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="bi bi-people-fill"></i></div>
+          <div>
+            <h6>Humanité & Respect</h6>
+            <p>Chaque patient est accueilli avec dignité. L'écoute et l'empathie sont au cœur de chaque consultation.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <div>
+            <h6>Innovation Médicale</h6>
+            <p>Nous intégrons les avancées technologiques pour améliorer le diagnostic et le traitement de nos patients.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <div>
+            <h6>Ancrage Local</h6>
+            <p>Fiers d'être à Gaya, nous nous engageons pour la santé de notre communauté et de toute la région de Dosso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BANNIÈRE CTA -->
+<section style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); padding: 4rem 0;">
+  <div class="container text-center">
+    <h2 style="color:#fff; font-size:clamp(1.5rem,3vw,2.2rem); margin-bottom:.8rem;">
+      Besoin d'une consultation urgente ?
+    </h2>
+    <p style="color:rgba(255,255,255,.82); margin-bottom:1.8rem; font-size:1rem;">
+      Notre équipe est disponible 24h/24 pour les urgences médicales. N'attendez pas.
+    </p>
+    <a href="tel:+22998013337" class="btn-hero-primary me-3">
+      <i class="bi bi-telephone-fill me-2"></i>Appeler maintenant
+    </a>
+    <a href="#contact" class="btn-hero-outline">
+      Prendre RDV en ligne
+    </a>
+  </div>
+</section>
+
+
+<!-- ===================== PAGE 6 – CONTACT DIRECTEUR ===================== -->
+<section id="contact" class="section-pad section-bg">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-label">Contactez-nous</span>
+      <h2 class="section-title">Contacter la Direction</h2>
+      <div class="divider mx-auto"></div>
+      <p class="section-sub mx-auto">
+        Pour toute demande, plainte, suggestion ou rendez-vous avec le directeur, utilisez ce formulaire. Nous vous répondrons dans les 24 heures.
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <div class="row g-0">
+        <!-- Infos gauche -->
+        <div class="col-lg-5">
+          <div class="contact-left">
+            <h3>Santé Plus</h3>
+            <p>Gaya, Niger — Quartier Plateaux.</p>
+
+            <!-- Direction card -->
+            <div class="director-card">
+              <div class="director-avatar">SP</div>
+              <div>
+                <div style="font-weight:700; font-size:.98rem;">Direction Générale</div>
+                <div style="font-size:.82rem; opacity:.8;">Santé Plus – Gaya</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <div>
+                <div class="inf-label">Adresse</div>
+                <div class="inf-val">Quartier Plateaux, Gaya, Niger</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="bi bi-telephone-fill"></i>
+              <div>
+                <div class="inf-label">Téléphone</div>
+                <div class="inf-val">+229 98 01 33 37</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="bi bi-envelope-fill"></i>
+              <div>
+                <div class="inf-label">Email</div>
+                <div class="inf-val">contact@santeplus.bj</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="bi bi-clock-fill"></i>
+              <div>
+                <div class="inf-label">Horaires</div>
+                <div class="inf-val">Lun–Sam : 7h00 – 20h00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire droit -->
+        <div class="col-lg-7">
+          <div class="contact-right">
+            <h4>Envoyer un message à la Direction</h4>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label">Prénom & Nom *</label>
+                <input type="text" class="form-control" id="nom" placeholder="Ex: Jean Dupont"/>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label">Téléphone *</label>
+                <input type="tel" class="form-control" id="tel" placeholder="+229 XX XX XX XX"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Adresse Email</label>
+                <input type="email" class="form-control" id="email" placeholder="votre@email.com"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Objet du message *</label>
+                <select class="form-select" id="objet">
+                  <option value="">Sélectionner l'objet...</option>
+                  <option>Demande de rendez-vous directeur</option>
+                  <option>Plainte ou réclamation</option>
+                  <option>Suggestion d'amélioration</option>
+                  <option>Partenariat institutionnel</option>
+                  <option>Demande d'emploi</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Votre message *</label>
+                <textarea class="form-control" id="msg" rows="5" placeholder="Décrivez votre demande en détail..."></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn-submit" onclick="sendMessage()">
+                  <i class="bi bi-send-fill me-2"></i>Envoyer le message
+                </button>
+                <div class="success-msg" id="successMsg">
+                  <i class="bi bi-check-circle-fill" style="font-size:1.3rem; color:var(--primary);"></i>
+                  <span>Votre message a été envoyé ! La direction vous répondra sous 24h.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte OpenStreetMap -->
+    <div class="mt-4">
+      <h5 class="mb-3" style="font-size:1rem; font-weight:700; color:var(--dark);">
+        <i class="bi bi-map-fill me-2" style="color:var(--accent)"></i>Notre localisation – Gaya, Niger
+      </h5>
+      <div style="border-radius:18px; overflow:hidden; border:1.5px solid var(--border);">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=3.40,13.03,3.47,13.11&layer=mapnik&marker=13.070,3.433"
+          width="100%" height="320" style="border:none; display:block;"
+          title="Carte – Santé Plus Gaya Niger">
+        </iframe>
+      </div>
+      <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem;">
+        <i class="bi bi-info-circle me-1"></i>
+        Gaya, Niger – Région de Dosso, Quartier Plateaux.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-brand mb-3">
+          <i class="bi bi-heart-pulse-fill me-1" style="color:var(--accent)"></i>
+          Santé<span>Plus</span>
+        </div>
+        <p style="font-size:.88rem; line-height:1.75; max-width:300px;">
+          Clinique moderne à Gaya, dédiée à des soins de qualité, humains et accessibles pour toute la famille de la région de Dosso.
+        </p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h6>Navigation</h6>
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#equipe">Notre Équipe</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#apropos">À Propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6>Nos Services</h6>
+        <a href="#services">Consultations Générales</a>
+        <a href="#services">Pédiatrie</a>
+        <a href="#services">Maternité & Gynéco</a>
+        <a href="#services">Urgences 24h/7j</a>
+        <a href="#services">Laboratoire</a>
+        <a href="#services">Pharmacie</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6>Infos Pratiques</h6>
+        <a href="#"><i class="bi bi-geo-alt me-1"></i>Quartier Plateaux, Gaya</a>
+        <a href="tel:+22998013337"><i class="bi bi-telephone me-1"></i>+229 98 01 33 37</a>
+        <a href="mailto:contact@santeplus.bj"><i class="bi bi-envelope me-1"></i>contact@santeplus.bj</a>
+        <div class="mt-3 p-3" style="background:rgba(255,255,255,.06); border-radius:10px; border:1px solid rgba(255,255,255,.1);">
+          <div style="font-size:.78rem; opacity:.7; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.4rem;">Urgences</div>
+          <div style="font-size:1.1rem; font-weight:700; color:var(--accent);">Disponible 24h/24</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>© 2024 Santé Plus – Gaya, Niger. Tous droits réservés.</span>
+      <span>
+        Site réalisé par
+        <a href="tel:+2290169134408" style="text-decoration:none;">
+          <strong>Anicet</strong> — <i class="bi bi-telephone-fill"></i> +229 01 69 13 44 08
+        </a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/22998013337" target="_blank" class="wa-float" title="Nous contacter sur WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Back to Top -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Retour en haut">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Back to top button
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backTop');
+    btn.classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  });
+
+  // Form submission
+  function sendMessage() {
+    const nom = document.getElementById('nom').value.trim();
+    const tel = document.getElementById('tel').value.trim();
+    const objet = document.getElementById('objet').value;
+    const msg = document.getElementById('msg').value.trim();
+    if (!nom || !tel || !objet || !msg) {
+      alert('Veuillez remplir tous les champs obligatoires (*).');
+      return;
+    }
+    const successEl = document.getElementById('successMsg');
+    successEl.style.display = 'flex';
+    successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Reset form
+    ['nom','tel','email','msg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('objet').value = '';
+  }
+
+  // Smooth entrance animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .team-card, .gallery-item, .value-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(25px)';
+    el.style.transition = 'opacity .55s ease, transform .55s ease';
+    observer.observe(el);
+  });
+</script>
+
 </body>
 </html>
